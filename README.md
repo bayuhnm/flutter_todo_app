@@ -1,6 +1,6 @@
 # flutter_todo_app
 
-A new Flutter project.
+My First Flutter project.
 
 ## Getting Started
 

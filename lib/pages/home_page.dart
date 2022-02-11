@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_app/widget/todo_item.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -8,6 +9,7 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -18,20 +20,43 @@ class Homepage extends StatelessWidget {
             Text(
               'Todo App',
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 24,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w600,
               ),
             ),
-            Expanded(child: Text('List')),
+            Expanded(
+              child: Column(
+                children: [
+                  TodoItem(),
+                  TodoItem()
+                ],
+              ),
+            ),
             Container(
-              height: 80,
+              height: 60,
               width: MediaQuery.of(context).size.width,
               margin: EdgeInsets.only(
                 bottom: 50,
               ),
+              padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                  color: Colors.white, 
+                  borderRadius: BorderRadius.circular(7),
+                  ),
+              child: Center(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        style: TextStyle(fontSize: 18),
+                        decoration:
+                            InputDecoration.collapsed(hintText: 'Add task...'),
+                      ),
+                    ),
+                    Icon(Icons.add),
+                  ],
+                ),
               ),
             ),
           ],
