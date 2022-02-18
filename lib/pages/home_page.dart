@@ -28,8 +28,12 @@ class Homepage extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  TodoItem(),
-                  TodoItem()
+                  TodoItem(
+                    title: 'Beli Iphone 13 Pro Max',
+                  ),
+                  TodoItem(
+                    title: 'Beli BMW',
+                  )
                 ],
               ),
             ),
