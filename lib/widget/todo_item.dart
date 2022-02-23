@@ -35,7 +35,11 @@ class _TodoItemState extends State<TodoItem> {
           borderRadius: BorderRadius.circular(7),
         ),
         child: ListTile(
-          title: Text(widget.title),
+          title: Text(
+            widget.title,
+          style: TextStyle(
+            decoration: isDone ? TextDecoration.lineThrough : null),
+          ),
           trailing: isDone ? Icon(Icons.check,) : SizedBox(), 
         ), 
       ),

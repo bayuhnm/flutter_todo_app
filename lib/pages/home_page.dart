@@ -1,10 +1,19 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_app/models/todo_model.dart';
 import 'package:flutter_todo_app/widget/todo_item.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+
+  List<TodoModel> todos = [];
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +32,11 @@ class Homepage extends StatelessWidget {
                 color: Colors.white,
                 fontSize: 24,
                 fontWeight: FontWeight.w600,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(
+                bottom: 20,
               ),
             ),
             Expanded(
@@ -45,9 +59,9 @@ class Homepage extends StatelessWidget {
               ),
               padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                  color: Colors.white, 
-                  borderRadius: BorderRadius.circular(7),
-                  ),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(7),
+              ),
               child: Center(
                 child: Row(
                   children: [
