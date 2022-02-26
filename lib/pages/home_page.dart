@@ -12,8 +12,8 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-
   List<TodoModel> todos = [];
+  TextEditingController todoController = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +41,13 @@ class _HomepageState extends State<Homepage> {
             ),
             Expanded(
               child: Column(
-                children: [
-                  TodoItem(
-                    title: 'Beli Iphone 13 Pro Max',
-                  ),
-                  TodoItem(
-                    title: 'Beli BMW',
-                  )
-                ],
-              ),
+                  children: todos
+                      .map(
+                        (item) => TodoItem(
+                          title: item.title,
+                        ),
+                      )
+                      .toList()),
             ),
             Container(
               height: 60,
@@ -60,19 +58,32 @@ class _HomepageState extends State<Homepage> {
               padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(7),
+                borderRadius: BorderRadius.circular(12),
               ),
               child: Center(
                 child: Row(
                   children: [
                     Expanded(
                       child: TextFormField(
+                        controller: todoController,
                         style: TextStyle(fontSize: 18),
                         decoration:
                             InputDecoration.collapsed(hintText: 'Add task...'),
                       ),
                     ),
-                    Icon(Icons.add),
+                    GestureDetector(
+                        onTap: () {
+                          print(todoController.text);
+                          setState(() {
+                            todos.add(
+                              TodoModel(
+                                  title: todoController.text, isDone: false),
+                            );
+
+                            todoController.text = '';
+                          });
+                        },
+                        child: Icon(Icons.add)),
                   ],
                 ),
               ),

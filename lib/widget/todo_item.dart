@@ -32,7 +32,7 @@ class _TodoItemState extends State<TodoItem> {
         ),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(7),
+          borderRadius: BorderRadius.circular(12),
         ),
         child: ListTile(
           title: Text(
